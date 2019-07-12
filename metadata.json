@@ -1,5 +1,5 @@
 {
-  "name": "scalecommerce-sc_randmon",
+  "name": "scalecommerce-sc_random",
   "version": "0.1.0",
   "author": "Thomas Lohner ScaleCommerce GmbH",
   "summary": "Puppet Module to generate host based random strings and numbers",

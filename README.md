@@ -1,6 +1,6 @@
-# Puppet Module to generate randmon strings and numbers
+# Puppet Module to generate random strings and numbers
 
-This module will produce repeatable randomness. Each node will get a different random string or number, but a given node’s result will be the same every time unless its hostname changes. The resource name is used as an aditional seed so that every declared string or number will result in different random values.
+This module will produce repeatable randomness. Each node will get a different random string or number, but a given node’s result will be the same every time unless its hostname changes. The resource name is used as an additional seed so that every declared string or number will result in different random values.
 
 ## Declare random resources in hiera
 
@@ -17,9 +17,7 @@ sc_random::numbers:
     max: 24
 ```
 
-`size` deaults to 16
-`characters` defaults to alphanumeric
-`max` defaults to 101. The function will produce a number larger than 0 and **less** than `max`.
+`size` deaults to 16. `characters` defaults to alphanumeric. `max` defaults to 101. The function will produce a number larger than 0 and **less** than `max`.
 
 ## Use random resources in hiera
 
@@ -39,6 +37,7 @@ crons:
 
 ## Use random resources in other modules
 ```
+include sc_random
 $m = $sc_random::number['apt_cron_hour']
 $p = $sc_random::string['my_password']
 ```
