@@ -20,6 +20,7 @@
 #
 # sc_random::numbers:
 #   my_number:
+#     min: 1
 #     max: 99
 #
 # === Authors
@@ -71,17 +72,31 @@ class sc_random (
   # iterate over numbers
   $number = $final_numbers.reduce({}) |$memo, $x| {
 
-    # set default max
-    if $final_numbers[$x[0]]['max'] {
-      $max = $final_numbers[$x[0]]['max']
-    } else {
-      $max = 101
-    }
-
     # use name as seed
     $seed = $x[0]
 
-    $rand = fqdn_rand($max, $seed)
+    if $min {
+
+      # set default max
+      if $final_numbers[$x[0]]['max'] {
+        $max = $final_numbers[$x[0]]['max'] - $min
+      } else {
+        $max = 101
+      }
+      $rand = fqdn_rand($max, $seed) + min
+
+    } else {
+
+      # set default max
+      if $final_numbers[$x[0]]['max'] {
+        $max = $final_numbers[$x[0]]['max']
+      } else {
+        $max = 101
+      }
+      $rand = fqdn_rand($max, $seed)
+
+    }
+
     # merge value from current iteration into hash
     $memo + {$x[0] => $rand}
   }

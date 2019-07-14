@@ -15,9 +15,10 @@ sc_random::numbers:
     max: 60
   apt_cron_hour:
     max: 24
+    min: 12
 ```
 
-`size` deaults to 16. `characters` defaults to alphanumeric. `max` defaults to 101. The function will produce a number larger than 0 and **less** than `max`.
+`size` deaults to 16. `characters` defaults to alphanumeric. `max` defaults to 101. `min` defaults to 0. The function will produce a number larger than or equal to `min` and **less** than `max`.
 
 ## Use random resources in hiera
 
